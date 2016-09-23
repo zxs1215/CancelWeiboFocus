@@ -1,0 +1,36 @@
+﻿function cancelpage()
+{
+    getAllManage().click();
+    var arr = document.getElementsByClassName("member_li S_bg1");
+    for(var i in arr)
+    {
+	try{
+        arr[i].click();
+	}
+	catch(e)
+	{
+	}
+    }
+    getA("取消关注").click();
+    getA("<span>确定</span>").click();
+}
+
+
+function getAllManage()
+{
+    return getA("批量管理");
+}
+
+function getA(str)
+{
+    var arr = document.getElementsByTagName("a");
+    for(var i in arr)
+    {
+
+        if(arr[i].innerHTML==str)
+            return arr[i];
+    }
+    return null;
+}
+cancelpage();
+setInterval(cancelpage,180000);
