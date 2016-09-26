@@ -1,0 +1,44 @@
+function foreach(arr,f)
+{
+    for(var i in arr)
+    {
+        f(arr[i]);
+    }
+}
+
+
+function getAll(tag,str)
+{
+    var brr = [];
+    var arr = document.getElementsByTagName(tag);
+    for(var i in arr)
+    {
+
+        if(arr[i].innerHTML==str)
+            brr.push(arr[i]);
+    }
+    return brr;
+}
+
+function delall()
+{
+    
+    var arr = getAll("a","删除");
+    if(arr.length>1)
+    {
+        foreach(arr,function(x){myclick(x);});
+        var brr = getAll("a","<span>确定</span>");
+        brr.pop();
+        foreach(brr,function(x){myclick(x);});
+    }
+    myclick(getAll("span","微博")[0]);
+}
+
+function myclick(o)
+{
+    if(o!=null)
+        o.click();
+}
+
+delall();
+setInterval(delall,9000);
